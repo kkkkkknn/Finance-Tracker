@@ -1,0 +1,6 @@
+PyQt5
+pyqt-tools
+pysqlite3
+
+matplotlib
+numpy
