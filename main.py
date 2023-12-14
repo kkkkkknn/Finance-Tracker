@@ -1,6 +1,7 @@
 import sqlite3
 import sys
 import matplotlib.pyplot as plt
+import os
 
 from PyQt5 import QtGui
 from PyQt5.QtWidgets import *
@@ -94,7 +95,6 @@ class AnalizExpenseWnd(QMainWindow, Ui_expense_analiz_wnd):
         self.back_btn_exp.clicked.connect(self.back_to_main_wnd_exp)
         self.label_expense = QLabel(self)
         self.label_expense.setGeometry(50, 50, 600, 450)
-
         pixmap = QPixmap("images/expense_chart.png")
         self.label_expense.setPixmap(pixmap)
 
@@ -102,6 +102,8 @@ class AnalizExpenseWnd(QMainWindow, Ui_expense_analiz_wnd):
         self.back_exp = MainWnd()
         self.back_exp.show()
         self.hide()
+        if os.path.isfile('images/expense_chart.png'):
+            os.remove('images/expense_chart.png')
 
 
 class AnalizIncomeWnd(QMainWindow, Ui_analiz_incom_wnd):
@@ -120,6 +122,8 @@ class AnalizIncomeWnd(QMainWindow, Ui_analiz_incom_wnd):
         self.back_inc = MainWnd()
         self.back_inc.show()
         self.hide()
+        if os.path.isfile('images/income_chart.png'):
+            os.remove('images/income_chart.png')
 
 
 if __name__ == '__main__':
