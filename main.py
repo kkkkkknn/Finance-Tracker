@@ -21,8 +21,6 @@ class MainWnd(QMainWindow, Ui_MainWnd):
         self.add_btn_income.clicked.connect(self.add_income)
         self.st_btn_expense.clicked.connect(self.show_analiz_expense_wnd)
         self.st_btn_income.clicked.connect(self.show_analiz_income_wnd)
-        # self.get_chart_expense()
-        # self.get_chart_income()
 
     def add_expense(self):
         category_expense = self.ct_exp_le.text()
@@ -62,7 +60,7 @@ class AnalizExpenseWnd(QMainWindow, Ui_expense_analiz_wnd):
         self.setWindowIcon(QtGui.QIcon('images/иконка.ico'))
         self.back_btn_exp.clicked.connect(self.back_to_main_wnd_exp)
         self.label_expense = QLabel(self)
-        self.get_chart_expense() ####
+        self.get_chart_expense()
         self.label_expense.setGeometry(50, 50, 600, 450)
         pixmap = QPixmap("images/expense_chart.png")
         self.label_expense.setPixmap(pixmap)
@@ -88,8 +86,8 @@ class AnalizExpenseWnd(QMainWindow, Ui_expense_analiz_wnd):
         self.back_exp.show()
         self.hide()
 
-        if os.path.isfile('images/expense_chart.png'):####
-            os.remove('images/expense_chart.png')####
+        if os.path.isfile('images/expense_chart.png'):
+            os.remove('images/expense_chart.png')
 
 
 class AnalizIncomeWnd(QMainWindow, Ui_analiz_incom_wnd):
@@ -98,12 +96,11 @@ class AnalizIncomeWnd(QMainWindow, Ui_analiz_incom_wnd):
         self.setupUi(self)
         self.setWindowIcon(QtGui.QIcon('images/иконка.ico'))
         self.back_btn__icome.clicked.connect(self.back_to_main_wnd_inc)
-        self.label_expense = QLabel(self)
+        self.label_analiz_icome = QLabel(self)
         self.get_chart_income()
-
-        self.label_expense.setGeometry(50, 50, 600, 450)
+        self.label_analiz_icome.setGeometry(50, 50, 600, 450)
         pixmap = QPixmap("images/income_chart.png")
-        self.label_expense.setPixmap(pixmap)
+        self.label_analiz_icome.setPixmap(pixmap)
 
     def get_chart_income(self):
         self.con = sqlite3.connect('data/my_users.db')
@@ -125,7 +122,6 @@ class AnalizIncomeWnd(QMainWindow, Ui_analiz_incom_wnd):
         self.back_inc = MainWnd()
         self.back_inc.show()
         self.hide()
-
         if os.path.isfile('images/income_chart.png'):####
             os.remove('images/income_chart.png')####
 
