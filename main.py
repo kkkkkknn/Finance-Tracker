@@ -54,38 +54,6 @@ class MainWnd(QMainWindow, Ui_MainWnd):
         self.analiz_inc_win.show()
         self.hide()
 
-    # def get_chart_expense(self):
-    #     self.con = sqlite3.connect('data/my_users.db')
-    #     self.cur = self.con.cursor()
-    #     self.cur.execute('''SELECT * FROM expense''')
-    #     data_exp = self.cur.fetchall()
-    #     cat_exp = []
-    #     sums_exp = []
-    #     for elem in data_exp:
-    #         if elem[0] not in cat_exp:
-    #             cat_exp.append(elem[0])
-    #             sums_exp.append(int(elem[1]))
-    #
-    #     fig, ax = plt.subplots()
-    #     ax.pie(sums_exp, labels=cat_exp, autopct='%1.1f%%')
-    #     fig.savefig('images/expense_chart.png')
-
-    # def get_chart_income(self):
-    #     self.con = sqlite3.connect('data/my_users.db')
-    #     self.cur = self.con.cursor()
-    #     self.cur.execute('''SELECT * FROM income''')
-    #     data_inc = self.cur.fetchall()
-    #     cat_inc = []
-    #     sums_inc = []
-    #     for elem in data_inc:
-    #         if elem[0] not in cat_inc:
-    #             cat_inc.append(elem[0])
-    #             sums_inc.append(int(elem[1]))
-    #
-    #     fig, ax = plt.subplots()
-    #     ax.pie(sums_inc, labels=cat_inc, autopct='%1.1f%%')
-    #     fig.savefig('images/income_chart.png')
-
 
 class AnalizExpenseWnd(QMainWindow, Ui_expense_analiz_wnd):
     def __init__(self):
@@ -94,7 +62,7 @@ class AnalizExpenseWnd(QMainWindow, Ui_expense_analiz_wnd):
         self.setWindowIcon(QtGui.QIcon('images/иконка.ico'))
         self.back_btn_exp.clicked.connect(self.back_to_main_wnd_exp)
         self.label_expense = QLabel(self)
-        # self.get_chart_expense()
+        self.get_chart_expense() ####
         self.label_expense.setGeometry(50, 50, 600, 450)
         pixmap = QPixmap("images/expense_chart.png")
         self.label_expense.setPixmap(pixmap)
@@ -119,8 +87,9 @@ class AnalizExpenseWnd(QMainWindow, Ui_expense_analiz_wnd):
         self.back_exp = MainWnd()
         self.back_exp.show()
         self.hide()
-        if os.path.isfile('images/expense_chart.png'):
-            os.remove('images/expense_chart.png')
+
+        if os.path.isfile('images/expense_chart.png'):####
+            os.remove('images/expense_chart.png')####
 
 
 class AnalizIncomeWnd(QMainWindow, Ui_analiz_incom_wnd):
@@ -131,6 +100,7 @@ class AnalizIncomeWnd(QMainWindow, Ui_analiz_incom_wnd):
         self.back_btn__icome.clicked.connect(self.back_to_main_wnd_inc)
         self.label_expense = QLabel(self)
         self.get_chart_income()
+
         self.label_expense.setGeometry(50, 50, 600, 450)
         pixmap = QPixmap("images/income_chart.png")
         self.label_expense.setPixmap(pixmap)
@@ -155,8 +125,9 @@ class AnalizIncomeWnd(QMainWindow, Ui_analiz_incom_wnd):
         self.back_inc = MainWnd()
         self.back_inc.show()
         self.hide()
-        if os.path.isfile('images/income_chart.png'):
-            os.remove('images/income_chart.png')
+
+        if os.path.isfile('images/income_chart.png'):####
+            os.remove('images/income_chart.png')####
 
 
 if __name__ == '__main__':
